@@ -1,0 +1,19 @@
+name: $(date:yyyymmdd)$(rev:.rr)   ##basically will look like 20191209.12
+
+triggers:
+  - master   # triger the build if master changes
+
+stages:
+  - stage: compile
+  jobs:
+    - job: aspnet
+      pool:
+        vmImage: ubuntu-1804
+      steps:
+        - script:
+            dotnet build 3_devops/Devops.sln
+  # - stage: test
+  # - stage: pack
+  # - stage: deploy
+
+          
