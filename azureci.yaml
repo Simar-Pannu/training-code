@@ -1,25 +1,7 @@
-# name: $(date:yyyymmdd)$(rev:.rr)   ##basically will look like 20191209.12
-
-# trigger:
-#   - master   # triger the build if master changes
-
-# stages:
-#   - stage: compile
-#   jobs:
-#     - job: aspnet
-#       pool:
-#         vmImage: ubuntu-18.04
-#       steps:
-#         - script:
-#             dotnet build 3_devops/Devops.sln
-#   # - stage: test
-#   # - stage: pack
-#   # - stage: deploy
-
-name: $(date:yyyymmdd)$(rev:.rr) #20191209.00
+name: $(date:yyyyMMdd)$(rev:.rr) #20191209.00
 
 trigger:
-  - master
+  - master  # triger the build if master changes
   
 stages:
   - stage: compile
@@ -28,5 +10,11 @@ stages:
         pool:
           vmImage: ubuntu-18.04
         steps:
-          - script: |
-              dotnet build 3_devops/Devops.sln
+          - script: dotnet build 3_devops/Devops.sln
+  - stage: test
+    jobs:
+      - jobs: aspnet_test
+        pool:
+          vmImage: ubuntu-18.04
+        steps:
+          - script: dotnet test 3_devops/Devops.sln --collect:"XPlat Code Coverage"
