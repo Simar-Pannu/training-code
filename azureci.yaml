@@ -13,7 +13,7 @@ stages:
           - script: dotnet build 3_devops/Devops.sln
   - stage: test
     jobs:
-      - jobs: aspnet_test
+      - job: aspnet_test
         pool:
           vmImage: ubuntu-18.04
         steps:
