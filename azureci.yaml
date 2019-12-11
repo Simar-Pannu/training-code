@@ -38,7 +38,7 @@ stages:
               version: '3.1.100'
           - script: dotnet tool install --global dotnet-sonarscanner
           - script: |
-              dotnet sonarscanner begin /k:Devops-Training /o:simar-pannu /d:sonar-login=$SONAR_TOKEN
+              dotnet sonarscanner begin /k:Devops-Training /o:simar-pannu /d:sonar.host.url=https://sonarcloud.io /d:sonar-login=$SONAR_TOKEN
               dotnet build
               dotnet test
               dotnet sonarscanner end/d:sonar-login=$SONAR_TOKEN
