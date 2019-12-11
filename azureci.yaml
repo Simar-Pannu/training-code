@@ -61,7 +61,7 @@ stages:
               DOCKER_USER: $(DOCKER_USER)
           - script: docker image push sspannu/devops:$BUILD_NAME
             env:
-              BUILD_NAME: $(Build.DefinitionName)
+              BUILD_NAME: $(Build.DefinitionName) 
 
 
 
