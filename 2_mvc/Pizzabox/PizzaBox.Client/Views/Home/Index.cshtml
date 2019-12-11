@@ -1,0 +1,37 @@
+﻿@model PizzaBox.Client.Models.Pizza
+
+
+
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">@ViewBag.Name</h1>
+    <h1 class="display-4">@ViewData["Name"]</h1>
+    <h1 class="display-4">@TempData["Name"]</h1>
+    @if(ViewBag.Pizza !=null){
+    <h1 class="display-4">@ViewBag.Pizza.Crusts</h1>
+    <h1 class="display-4">@ViewBag.Pizza.Sizes</h1>
+    }
+</div>
+
+@using(@Html.BeginForm("/home/order")){
+  @Html.AntiForgeryToken()
+  foreach(var c in Model.Crusts){@Html.RadioButtonFor(m=> m.Crust, @Model.Crusts) @Html.LabelFor(m=>m.Crust) }
+  
+
+  foreach(var s in Model.Sizes){  @Html.RadioButtonFor(m=> m.Size,  @Model.Sizes)
+  @Html.LabelFor(m=>m.Size)}
+
+    
+  @Html.RadioButtonFor(m=> m.Quantity)
+  @Html.LabelFor(m=>m.Quantity)
+
+  <input type = "submit" value = "order" />
+
+
+
+}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">

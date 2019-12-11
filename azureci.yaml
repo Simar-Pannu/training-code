@@ -38,7 +38,7 @@ stages:
               /k:Devops-Training \
               /o:simar-pannu \
               /d:sonar.host.url=https://sonarcloud.io/ \
-              /d:sonar-login=$SONAR_TOKEN \
+              /d:sonar.login=$SONAR_TOKEN \
               /d:sonar.cs.operncover.reportsPaths=**/TestResults/*/coverage.opencover.xml \
               /d:sonar.cs.vstest.reportsPaths=**/*.trx
               dotnet build 3_devops/Devops.sln

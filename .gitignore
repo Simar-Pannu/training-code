@@ -4,3 +4,9 @@
 
 # vagrant 
 **/.vagrant/
+
+#nodejs
+node_modules/
+
+#coverlet
+TestResults/
